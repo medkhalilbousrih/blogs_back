@@ -4,9 +4,12 @@ const blogSchema = new mongoose.Schema({
   title: {
     type: String,
     unique: true,
-    minlength: [4, "blog title requires at least 4 caracters"],
+    minlength: [4, "blog title is too short"],
   },
-  author: String,
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
   url: String,
   likes: Number,
 });
